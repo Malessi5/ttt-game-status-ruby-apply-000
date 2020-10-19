@@ -33,3 +33,4 @@ def won?(board)
   def full?(board)
     !board.any?{|i| i==" "}
   end
+  end
