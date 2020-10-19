@@ -15,22 +15,19 @@ WIN_COMBINATIONS = [
   [2,4,6]
 ]
 
+
 def won?(board)
-  WIN_COMBINATIONS.each do |win_combination|
-    win_index_1 = win_combination[0]
-    win_index_2 = win_combination[1]
-    win_index_3 = win_combination[2]
+  all_match = false
+  WIN_COMBINATIONS.each do |win_combo|
 
-    position_1 = board[win_index_1]
-    position_2 = board[win_index_2]
-    position_3 = board[win_index_3]
-
-    if position_1 == position_2 && position_2 == position_3 && position_taken?(board, win_index_1)
-      return win_combination
-  else
-    false
-    end
+  if win_combo.all?{|win_index|board[win_index]=="X"} || win_combo.all?{|win_index|board[win_index]=="O"}
+    all_match = win_combo
+      end
   end
+     all_match
+end
+
+
 
   def full?(board)
     board.all? {|i| i == "X" || i == "O"}
